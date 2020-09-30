@@ -14,27 +14,35 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        TextView tvData1 = (TextView) findViewById(R.id.item_name);
-        TextView tvData2 = (TextView) findViewById(R.id.item_nim);
-        TextView tvData3 = (TextView) findViewById(R.id.item_tanggal);
-        TextView tvData4 = (TextView) findViewById(R.id.item_jenis_kelamin);
-        TextView tvData5 = (TextView) findViewById(R.id.item_jurusan);
+        TextView nama = (TextView) findViewById(R.id.item_name);
+        TextView nim = (TextView) findViewById(R.id.item_nim);
+        TextView tanggal = (TextView) findViewById(R.id.item_tanggal);
+        TextView jk = (TextView) findViewById(R.id.item_jenis_kelamin);
+        TextView jurusan = (TextView) findViewById(R.id.item_jurusan);
 
         if(getIntent().getExtras()!=null){
             Bundle bundle = getIntent().getExtras();
-            tvData1.setText(bundle.getString("name"));
-            tvData2.setText(bundle.getString("nim"));
-            tvData3.setText(bundle.getString("tanggal"));
-            tvData4.setText(bundle.getString("jenis_kelamin"));
-            tvData5.setText(bundle.getString("jurusan"));
+            nama.setText(bundle.getString("name"));
+            nim.setText(bundle.getString("nim"));
+            tanggal.setText(bundle.getString("tanggal"));
+            jk.setText(bundle.getString("jenis_kelamin"));
+            jurusan.setText(bundle.getString("jurusan"));
 
         }else{
-            tvData1.setText(getIntent().getStringExtra("name"));
-            tvData2.setText(getIntent().getStringExtra("nim"));
-            tvData3.setText(getIntent().getStringExtra("tanggal"));
-            tvData4.setText(getIntent().getStringExtra("jenis_kelamin"));
-            tvData5.setText(getIntent().getStringExtra("jurusan"));
+            nama.setText(getIntent().getStringExtra("name"));
+            nim.setText(getIntent().getStringExtra("nim"));
+            tanggal.setText(getIntent().getStringExtra("tanggal"));
+            jk.setText(getIntent().getStringExtra("jenis_kelamin"));
+            jurusan.setText(getIntent().getStringExtra("jurusan"));
         }
+
+        Biodata biodata = getIntent().getParcelableExtra("BIODATA");
+
+        nama.setText( biodata.getNama());
+        nim.setText(biodata.getNim());
+        tanggal.setText(biodata.getTanggal());
+        jk.setText (biodata.getJk());
+        jurusan.setText(biodata.getJurusan());
     }
 
 }

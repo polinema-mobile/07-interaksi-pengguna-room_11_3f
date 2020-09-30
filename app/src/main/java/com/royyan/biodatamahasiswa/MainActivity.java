@@ -20,13 +20,13 @@ public class MainActivity extends AppCompatActivity {
 
     private DatePickerDialog datePickerDialog;
     private EditText editTextName, editTextNim, editTextTgl;
-    private Button getData;
+    private Button getData, getParcel;
     private RadioGroup radioSection;
     private Spinner spinner;
-    private RadioButton laki, perempuan;
+    private RadioButton laki, perempuan, radioBut;
 
-    String nama, jk, jurusan;
-    int nim, tanggal;
+//    String nama, jk, jurusan;
+//    int nim, tanggal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         editTextTgl = (EditText) findViewById(R.id.tanggal_lahir);
         getData = (Button) findViewById(R.id.button_simpan);
+        getParcel = (Button) findViewById(R.id.getParcel);
         radioSection = (RadioGroup) findViewById(R.id.radio_grup);
         editTextName = (EditText) findViewById(R.id.nama_mahasiswa);
         editTextNim = (EditText) findViewById(R.id.nim_mahasiswa);
@@ -92,6 +93,19 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("jenis_kelamin", perempuan.getText().toString());
                 }
                 intent.putExtra("jurusan", spinner.getSelectedItem().toString());
+                startActivity(intent);
+            }
+        });
+
+        getParcel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int selectedId = radioSection.getCheckedRadioButtonId();
+                radioBut = (RadioButton) findViewById(selectedId);
+                Biodata biodata = new Biodata(editTextName.getText().toString(), editTextNim.getText().toString(), editTextTgl.getText().toString(), radioBut.getText().toString(), spinner.getSelectedItem().toString());
+
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("BIODATA", biodata);
                 startActivity(intent);
             }
         });
