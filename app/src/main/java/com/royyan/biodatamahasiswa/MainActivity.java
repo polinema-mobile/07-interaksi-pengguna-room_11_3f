@@ -25,9 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinner;
     private RadioButton laki, perempuan, radioBut;
 
-//    String nama, jk, jurusan;
-//    int nim, tanggal;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 radioBut = (RadioButton) findViewById(selectedId);
                 Biodata biodata = new Biodata(editTextName.getText().toString(), editTextNim.getText().toString(), editTextTgl.getText().toString(), radioBut.getText().toString(), spinner.getSelectedItem().toString());
 
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                Intent intent = new Intent(MainActivity.this, DetailActivityParcel.class);
                 intent.putExtra("BIODATA", biodata);
                 startActivity(intent);
             }

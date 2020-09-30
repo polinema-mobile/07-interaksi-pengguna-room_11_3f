@@ -28,21 +28,13 @@ public class DetailActivity extends AppCompatActivity {
             jk.setText(bundle.getString("jenis_kelamin"));
             jurusan.setText(bundle.getString("jurusan"));
 
-        }else{
+        }else {
             nama.setText(getIntent().getStringExtra("name"));
             nim.setText(getIntent().getStringExtra("nim"));
             tanggal.setText(getIntent().getStringExtra("tanggal"));
             jk.setText(getIntent().getStringExtra("jenis_kelamin"));
             jurusan.setText(getIntent().getStringExtra("jurusan"));
         }
-
-        Biodata biodata = getIntent().getParcelableExtra("BIODATA");
-
-        nama.setText( biodata.getNama());
-        nim.setText(biodata.getNim());
-        tanggal.setText(biodata.getTanggal());
-        jk.setText (biodata.getJk());
-        jurusan.setText(biodata.getJurusan());
     }
 
 }
